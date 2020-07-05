@@ -325,7 +325,7 @@ spawn(function()
     end
 end)
 spawn(function()
-    while wait() do
+    while wait(2.5) do
         if _G.delete2 then
             for i, v in pairs(PetList:GetChildren("Template")) do
                 if v.ClassName == "ImageButton" then
