@@ -12,6 +12,7 @@ local plr = game.Players.LocalPlayer
 local RunService = game:GetService("RunService")
 local rs = RunService.RenderStepped
 local VirtualUser = game:GetService("VirtualUser")
+local PetList = game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui.Pets.Holder.PetHolder.List
 local WalkSpeed = game.Players.LocalPlayer.Character.Humanoid.WalkSpeed
 local JumpPower = game.Players.LocalPlayer.Character.Humanoid.JumpPower
 
@@ -24,7 +25,8 @@ local settings = main:CreateCategory("Settings")
 local rselect = stuff:CreateSection("Selector")
 local farming = stuff:CreateSection("Farming Section")
 local pselect = pets:CreateSection("Selector")
-local openeggs = pets:CreateSection("Pet Section")
+local openeggs = pets:CreateSection("Pet Open Section")
+local deletepets = pets:CreateSection("Pet Delete Section")
 local ssection = settings:CreateSection("UI Stuff")
 local csection = settings:CreateSection("Character")
 
@@ -179,7 +181,7 @@ openeggs:Create(
     }
 )
 
-openeggs:Create(
+deletepets:Create(
     "Toggle",
     "Auto Delete All Unlocked Pets (Not legendary's)",
     function(DelState)
@@ -187,6 +189,21 @@ openeggs:Create(
             _G.delete = true
         else
             _G.delete = false
+        end
+    end,
+    {
+        default = false,
+    }
+)
+
+deletepets:Create(
+    "Toggle",
+    "Auto Delete Patriotic Wisp",
+    function(Del2State)
+        if Del2State then
+            _G.delete2 = true
+        else
+            _G.delete2 = false
         end
     end,
     {
@@ -304,6 +321,24 @@ spawn(function()
     while wait() do
         if _G.delete then
             game:GetService("ReplicatedStorage").Modules.Network.RemoteEvent:FireServer("DeleteAllUnlocked")
+        end
+    end
+end)
+spawn(function()
+    while wait() do
+        if _G.delete2 then
+            for i, v in pairs(PetList:GetChildren("Template")) do
+                if v.ClassName == "ImageButton" then
+                    if v.itemName.Text == "Patriotic Wisp" then
+                        local args = {
+                            [1] = "DeletePet",
+                            [2] = v.ID.Value,
+                        }
+                        
+                        game:GetService("ReplicatedStorage").Modules.Network.RemoteEvent:FireServer(unpack(args))
+                    end
+                end
+            end
         end
     end
 end)
