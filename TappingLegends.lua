@@ -41,7 +41,7 @@ for i,v in pairs(game:GetService("ReplicatedStorage").PetLibrary.Pets:GetChildre
                     [4] = true,
                 }
                 
-                game:GetService("ReplicatedStorage").RemoteEvents.AddPet:FireServer(unpack(args))
+                game:GetService("ReplicatedStorage").RemoteEvents.RebirthShopUI:FireServer(unpack(args))
             end,
             {
                 animated = true,
@@ -62,7 +62,7 @@ for i2,v2 in pairs(game:GetService("ReplicatedStorage").PetLibrary.Pets:GetChild
                     [4] = true,
                 }
                 
-                game:GetService("ReplicatedStorage").RemoteEvents.AddPet:FireServer(unpack(args))
+                game:GetService("ReplicatedStorage").RemoteEvents.RebirthShopUI:FireServer(unpack(args))
             end,
             {
                 animated = true,
@@ -83,7 +83,7 @@ for i3,v3 in pairs(game:GetService("ReplicatedStorage").PetLibrary.Pets:GetChild
                     [4] = true,
                 }
                 
-                game:GetService("ReplicatedStorage").RemoteEvents.AddPet:FireServer(unpack(args))
+                game:GetService("ReplicatedStorage").RemoteEvents.RebirthShopUI:FireServer(unpack(args))
             end,
             {
                 animated = true,
@@ -104,7 +104,7 @@ for i4,v4 in pairs(game:GetService("ReplicatedStorage").PetLibrary.Pets:GetChild
                     [4] = true,
                 }
                 
-                game:GetService("ReplicatedStorage").RemoteEvents.AddPet:FireServer(unpack(args))
+                game:GetService("ReplicatedStorage").RemoteEvents.RebirthShopUI:FireServer(unpack(args))
             end,
             {
                 animated = true,
@@ -125,7 +125,7 @@ for i5,v5 in pairs(game:GetService("ReplicatedStorage").PetLibrary.Pets:GetChild
                     [4] = true,
                 }
                 
-                game:GetService("ReplicatedStorage").RemoteEvents.AddPet:FireServer(unpack(args))
+                game:GetService("ReplicatedStorage").RemoteEvents.RebirthShopUI:FireServer(unpack(args))
             end,
             {
                 animated = true,
