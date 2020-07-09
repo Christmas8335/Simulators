@@ -29,7 +29,7 @@ local cpets = pets:CreateSection("Give Common Pets")
 local ssection = settings:CreateSection("UI Stuff")
 local csection = settings:CreateSection("Character")
 
-section:Create(
+petexp:Create(
     "Toggle",
     "Collect All Gems",
     function(State)
@@ -43,16 +43,6 @@ section:Create(
         default = false,
     }
 )
-spawn(function()
-    while wait(5) do
-        if _G.Enabled then
-            for i,v in pairs(game.Workspace:GetChildren()) do
-                if v.Name == "XPorb" then
-                v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-            end
-        end
-    end
-end)
 
 for i,v in pairs(game:GetService("ReplicatedStorage").PetLibrary.Pets:GetChildren()) do
     if v.Settings.Rarity.Value == "Exotic" then
@@ -201,7 +191,7 @@ ssection:Create(
         end
     end,
     {
-        default = Enum.KeyCode.P
+        default = Enum.KeyCode.Q
     }
 )
 ssection:Create(
@@ -214,3 +204,15 @@ ssection:Create(
         animated = true,
     }
 )
+
+spawn(function()
+    while wait(5) do
+        if _G.Enabled then
+            for i,v in pairs(game.Workspace:GetChildren()) do
+                if v.Name == "XPorb" then
+                v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                end
+            end
+        end
+    end
+end)
